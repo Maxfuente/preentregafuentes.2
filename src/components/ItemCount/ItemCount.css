@@ -1,0 +1,23 @@
+.contador {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .counter {
+    font-size: 24px;
+  }
+  
+  .button {
+    padding: 8px 16px;
+    margin: 0 4px;
+    font-size: 16px;
+    border: none;
+    background-color: #f2f2f2;
+    color: #a71313;
+    cursor: pointer;
+  }
+  
+  .contador button:hover {
+    background-color: #e0e0e0;
+  }
+  

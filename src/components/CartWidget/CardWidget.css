@@ -1,0 +1,20 @@
+.CartWidget {
+    display: flex;
+    align-items: center;
+    color: #fff;
+  }
+  
+  .CartWidget img {
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+  }
+  
+  .CartWidget .itemCount {
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 50%;
+    font-size: 12px;
+  }
+  

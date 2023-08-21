@@ -1,0 +1,13 @@
+.list-group {
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    
+  }
+  
+  .list-group .CardItem {
+    width: 250px;
+    margin: 20px;
+
+  }
+  
