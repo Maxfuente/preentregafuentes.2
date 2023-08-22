@@ -7,7 +7,7 @@ import CartContext from "../../Context/CartContext"
 
 const Checkout = () => {
     const [loading, setLoading] = useState(false)
-    const [orderId, setorderId] = useState ('')
+    const [orderId, setOrderId] = useState ('')
 
     const { cart, total, clearcart } = useContext(CartContext)
 
@@ -30,22 +30,22 @@ const Checkout = () => {
 
         const ids = cart.map(prod => prod.id)
 
-            const productsRef = collection(db, 'productos')
+            const productsRef = collection(db, 'products')
 
-            const productosAgregadosdeFirestore = await getDocs(query(productsRef, where(documentId(), 'in', ids)))
+            const productsAddedFromFirestore = await getDocs(query(productsRef, where(documentId(), 'in', ids)))
 
-            const { docs } = productosAgregadosdeFirestore
+            const { docs } = productsAddedFromFirestore
 
 
             docs.forEach(doc => {
                 const dataDoc = doc.data()
                 const stockDb = dataDoc.stock
 
-                const productosAgregadosalCarro = cart.find(prod => prod.id === doc.id )
-                const prodCantidad = productosAgregadosalCarro?.quantity
+                const productsAddedToCart = cart.find(prod => prod.id === doc.id )
+                const prodQuantity = productsAddedToCart?.quantity
 
-                if(stockDb >= prodCantidad){
-                    batch.update(doc.ref, { stock: stockDb - prodCantidad})
+                if(stockDb >= prodQuantity){
+                    batch.update(doc.ref, { stock: stockDb - prodQuantity})
                 }else{
                     outOfStock.push({ id: doc.id, ...dataDoc})
                 }
@@ -58,7 +58,7 @@ const Checkout = () => {
 
                 const orderAdded = await addDoc(orderRef, objOrder)
 
-                setorderId(orderAdded.id)
+                setOrderId(orderAdded.id)
                 clearcart()
             }else{
                 console.error('no hay stock')
