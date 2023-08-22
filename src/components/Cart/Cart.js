@@ -22,7 +22,7 @@ return (
         { cart.map(p => <CartItem key={p.id}{...p}/>)}
         <h3>Total:${total}</h3>
         <button onClick={()=> clearCart()} class="btn btn-primary">Vaciar Carrito</button>
-        <Link to='/checkout' class="btn btn-primary">checkout</Link>
+        <Link to='/checkout' class="btn btn-primary">Pagar</Link>
     </div>
 )
 }
