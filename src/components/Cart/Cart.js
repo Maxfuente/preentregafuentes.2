@@ -6,8 +6,11 @@ import CartContext from "../../Context/CartContext"
 
 
 const Cart =() => {
-const { cart, clearCart, totalQuantity, total} = useContext(CartContext)
+const { cart, clearCart, totalQuantity} = useContext(CartContext)
 
+let total = 0;
+        cart.forEach((p) => {
+            total += p.price * p.quantity;});
 if (totalQuantity === 0){
     return (
         <div>
